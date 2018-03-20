@@ -1,6 +1,7 @@
 from django.views import generic
 from django.views.generic import TemplateView
 from django.shortcuts import redirect
+from django.http import HttpResponse
 from .questionViews import ConsentQuestionView, consent, SVOQuestionView, SVOAnswerReceiver, SVOMainView
 from .experimentViews import MainExperiment, SurveyReturn, Tutorial
 from .models import ConditionType, ParticipantResult
@@ -71,3 +72,6 @@ class SetupPA(TemplateView):
         request.session['conditionDescription'] = condition.description
         request.session['is_prolific'] = True
         return redirect('/experiment/pis/')
+
+def acme(request):
+    return HttpResponse('IhMnXAF7yLiVmBObHr26FlWeFCndmZkcauyhbpxb6tw.Eh0PsY5iDEUOm0k1bFC74E7dTAqLUQAkOgJx2cZId_g')

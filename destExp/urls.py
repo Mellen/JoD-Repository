@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from experiment.views import Home
+from experiment.views import Home, acme
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^experiment/', include('experiment.urls')),
+    url(r'.well-known/acme-challenge/IhMnXAF7yLiVmBObHr26FlWeFCndmZkcauyhbpxb6tw', acme),
     url(r'^$', Home.as_view()),
 ]
