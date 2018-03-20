@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Decision Making Study</title>
+    <link rel="stylesheet" href="/static/css/experiment.css" type="text/css">
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="row">
+      <div class="col-md-3">
+
+	{% if condition == 'Eyes' %}
+	<img src="/static/img/eyecondition.png" id="prolificImage">
+	{% else %}
+	<img src="/static/img/controlcondition.png" id="prolificImage">
+	{% endif %}
+
+      </div>
+      <div class="col-md-9 container">
+      <h1>Decision Making Study</h1>
+
+      <div class="progress">
+	  <div class="progress-bar" role="progressbar" aria-valuenow="{{partnerNumber}}" aria-valuemin="0" aria-valuemax="9" style="width:{{completePercent}}%"><span class="sr-only">Partner number: {{ partnerNumber }} of {{ max_partner }}</span></div>
+      </div>
+      
+      {% if partnerNumber <= max_partner %}
+      <div id="divConnecting" class="current">
+	<p>{{ waitingMessage }}</p>
+      </div>
+
+      <form id="frmDestructionInput" method="POST" class="notcurrent" action="">{% csrf_token %}
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">My decision</h3>
+	  </div>
+	  <div class="panel-body">
+	    <p>Do you want to pay 10p to reduce your partner's income by 50p?</p>
+	    <p><input type="radio" id="rdoDestroyYes" name="rdoDestroy" value="yes">Yes</p>
+	    <p><input type="radio" id="rdoDestroyNo" name="rdoDestroy" value="no">No</p>
+	  </div>
+	</div>
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">My partner's decision</h3>
+	  </div>
+	  <div class="panel-body">
+	    <p>My estimate is that</p>
+	    <p><input type="radio" id="rdoWillDestroyNo" name="rdoPartnerDestroy" value="no">my partner will <strong>not</strong> reduce my income.</p>
+	    <p><input type="radio" id="rdoWillDestroyYes" name="rdoPartnerDestroy" value="yes">my partner will reduce my income.</p>
+	  </div>
+	</div>
+
+	  <div class="row">
+	    <div class="col-md-3"></div>
+	    <p class="col-md-6"><input type="button" class="btn btn-success big-button" id="btnSubmit" value="Next Partner"></p>
+	    <div class="col-md-3"></div>
+	  </div>
+      </form>
+
+      {% else %}
+    
+      <div id="divDone">
+	<p>You have finished your pairings. You are now asked to complete 5 short surveys.</p>
+        <input type="button" class="btn btn-success" value="Continue to survey 1/5" id="btnDone">
+      </div>
+    </div>
+    {% endif %}
+
+    </div>
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/utils.js"></script>
+    {% if condition == 'Camera' %}
+    <video autoplay style="visibility:hidden" id="vid"></video>
+    <script type="text/javascript" src="/static/js/jsia/jsia.js"></script>
+    <script type="text/javascript">
+      var vid = document.getElementById('vid');
+      jsia.setupVideoCallback(vid, function(){},
+      function(e)
+      {
+        console.log(e);
+        if(e.name === 'NotAllowedError')
+        {
+          var xhr = new XMLHttpRequest();
+	  xhr.open('GET', '/experiment/switchToControl');
+
+	 xhr.addEventListener('load', function()
+			      {
+				  if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200)
+                                  {
+                                    console.log('switched to control');
+				  }
+				  else
+				  {
+				      console.log('The XHR has not returned correctly when switching the participant to the control condition.');
+				  }
+			      });
+
+	 xhr.send();
+      
+        }
+      }
+      , 1000);
+    </script>
+    {% endif%}
+    <script type="text/javascript" src="/static/js/mainExperiment.js"></script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+{% extends "admin/index.html" %}
+{% load static %}
+
+{% block sidebar %}
+    {{block.super}}
+<ul>
+  <li>
+    <a href="experiment/participantresult/getsummary/">Download Summary</a>
+  </li>
+  <li>
+    <a href="experiment/participantresult/getdata/">Download Current Data</a>
+  </li>
+  <li>
+    <a href="experiment/participantresult/getpayouts/">Download Current Payouts List</a>
+  </li>
+  <li>
+    <a href="experiment/participantresult/getsvodata/">Download SVO data</a>
+  </li>
+</ul>
+  <div>
+    <input type="button" value="Make dummy entries" id="btnDummies">
+  </div>
+  <div>
+    <input type="button" value="Remove widthdrawn data" id="btnCleanse">
+  </div>
+  <script type="text/javascript" src="{% static 'js/admin_index.js' %}"></script>
+{% endblock %}

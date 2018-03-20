@@ -1,0 +1,12 @@
+*.*~
+__pycache__/
+destExp/staticfiles/
+bin/
+lib/
+include/
+local/
+prod_backups/
+adminpassword.txt
+email.settings
+the_secret
+run

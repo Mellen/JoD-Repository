@@ -1,0 +1,13 @@
+<table>
+  <tr>
+    {% for v in question.you_options %}
+    <td>{{ v }}</td>
+    {% endfor %}
+  </tr>
+  <tr>
+    {% for v in question.them_options %}
+    <td>{{ v }}</td>
+    {% endfor %}
+  </tr>
+</table>
+<p><input type="button" id="btnAccept{{question.id}}" value="accept"></p>

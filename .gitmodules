@@ -1,0 +1,3 @@
+[submodule "experiment/static/js/jsia"]
+	path = experiment/static/js/jsia
+	url = https://github.com/Mellen/jsia

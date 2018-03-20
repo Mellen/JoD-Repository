@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Setup the Experiment</title>
+    <link rel="stylesheet" href="/static/css/experiment.css" type="text/css">
+  </head>
+  <body>
+    <form method="POST" action="">{% csrf_token %}
+      <p><strong>To the experimenter:</strong> Please select the condition to run the experiment under</p>
+      <select id="selCondition" name="selCondition">
+	{% for condition in data %}
+	<option value="{{condition.id}}">{{ condition.description }}</option>
+	{% endfor %}
+      </select>
+      <p><input type="submit" value="start experiment"></p>
+      <h3>Number of each condition run</h3>
+      <ul>
+	{% for condition in data %}
+	<li>{{ condition.description }}: {{ condition.count }}</li>
+	{% endfor %}
+      </ul>
+    </form>
+  </body>
+</html>

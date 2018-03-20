@@ -1,0 +1,61 @@
+body
+{
+    padding-left:10px;
+    padding-right:10px;
+}
+
+#divDone.hidden
+{
+    visibility:collapse;
+}
+
+.container
+{
+    background-color:#FFFFFF;
+}
+
+td
+{
+    cursor:pointer;
+}
+
+td.selected
+{
+    background-color:#FFAADD;
+}
+
+input.button-right
+{
+    float:right;
+}
+
+input.big-button
+{
+    font-size:70pt;
+}
+
+tr.svo td, tr.svo th
+	     {
+		 font-size:20pt;
+		 padding:0.5em 1em;
+	     }
+
+#resultChart
+{
+    padding-top:0.5em;
+}
+
+#divConnecting
+{
+    font-size: 70pt;
+}
+
+.current
+{
+    display: default;
+}
+
+.notcurrent
+{
+    display: none;
+}

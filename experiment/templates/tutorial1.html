@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Tutorial Decision Making Experiment</title>
+    <link rel="stylesheet" href="{% static 'css/experiment.css' %}" type="text/css">
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap/css/bootstrap-theme.min.css' %}" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="row">
+      <div class="col-md-3">
+
+      </div>
+      <div class="col-md-9 container">
+      <h1>Decision Making Experiment - Tutorial</h1>
+
+      <div class="progress">
+	  <div id="progbar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="9" style="width:0%"><span class="sr-only">Partner number: 1 of 10</span></div>
+      </div>
+
+      <form id="frmDestructionInput" method="POST" action="">{% csrf_token %}			     
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">My decision</h3>
+	  </div>
+	  <div class="panel-body">
+	    <p>Do you want to pay 10p to reduce your partner's income by 50p?</p>
+	    <p><input type="radio" id="rdoDestroyYes" name="rdoDestroy" value="yes">Yes</p>
+	    <p><input type="radio" id="rdoDestroyNo" name="rdoDestroy" value="no">No</p>
+	  </div>
+	</div>
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">My partner's decision</h3>
+	  </div>
+	  <div class="panel-body">
+	    <p>My estimate is that</p>
+	    <p><input type="radio" id="rdoWillDestroyNo" name="rdoPartnerDestroy" value="no">my partner will <strong>not</strong> reduce my income.</p>
+	    <p><input type="radio" id="rdoWillDestroyYes" name="rdoPartnerDestroy" value="yes">my partner will reduce my income.</p>
+	  </div>
+	</div>
+
+	  <div class="row">
+	    <div class="col-md-3"></div>
+	    <p class="col-md-6"><input type="button" class="btn btn-success big-button" id="btnSubmit" value="Next Partner"></p>
+	    <div class="col-md-3"></div>
+	  </div>
+      </form>
+      </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/utils.js'%}"></script>
+    <script type="text/javascript" src="{% static 'js/tutorial.js' %}"></script>
+  </body>
+</html>

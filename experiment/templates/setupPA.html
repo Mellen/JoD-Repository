@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Input Prolific Academic ID</title>
+    <link rel="stylesheet" href="/static/css/experiment.css" type="text/css">
+  </head>
+  <body>
+    <form method="POST" action="">{% csrf_token %}
+      <p>Please insert your Prolific Academic ID in the box below:</p>
+      <p><label for="txtProlificID">Prolific Academic ID:</label><input type="text" id="txtProlificID" name="txtProlificID"></p>
+      <p><input type="submit" value="start experiment"></p>
+    </form>
+  </body>
+</html>
