@@ -20,6 +20,45 @@ If you're running it from Heroku, set the environment variables in the settings 
 
 Running it for the first time will require going through the regular Django setup.
 
+Once you're up and running you'll need to add somethings to the database. Firstly you'll need to add some settings to the settings object. You can do this either via the Django admin interface (under "Experiment" then "Site settingss"), or via `python manage.py shell`. The following is an example python listing:
+
+    from experiment.SiteSettings import SiteSettings as settings
+    setting = settings(key='bonus_email', value="email@example.com")
+    setting.save()
+    setting = settings(key='limesurveyURL', value="https://limesurvey.example.com/index.php/123456?lang=en")
+    setting.save()
+    setting = settings(key='PAURL', value="https://www.prolific.ac/submissions/complete?cc=AAAAAAAA")
+
+- The `limesurveyURL` should point your survey for the follow up questions.
+- The `PAURL` should be the completion URL supplied to you by Prolific Academic. If you're not using Prolific Academic, you can ignore this.
+- The `bonus_email` is the email address where you are sent the list of bonuses to pay out for Prolific Academic.
+
+Secondly you'll need to setup the consent questions. Again, this can be done via the Django admin interface or the Django shell. The following is the listing for using the shell:
+
+    from experiment.ConsentQuestion import ConsentQuestion as CQ
+    cq = CQ(body='I have read the study information sheet and understand what the study will involve.', order=1, camera_only=False)
+    cq.save()
+    cq = CQ(body='I understand that this project has been reviewed by, and received ethics clearance through, the University of Oxford Central University Research Ethics Committee and the Ministry of Defence Research Ethics Committee.', order=2, camera_only=False)
+    cq.save()
+    cq = CQ(body='I understand that my participation is voluntary and that I am free to withdraw myself at any time, without giving any reason, and without any adverse consequences or penalty.', order=3, camera_only=False)
+    cq.save()
+    cq = CQ(body='I understand that only the researcher, his supervisors and members of the University auditing the process will have access to any personal data provided.', order=4, camera_only=False)
+    cq.save()
+    cq = CQ(body='I understand that the anonymised experimental data may be made available to other researchers.', order=5, camera_only=False)
+    cq.save()
+    cq = CQ(body='I understand how to raise concerns or make a complaint.', order=8, camera_only=False)
+    cq.save()
+    cq = CQ(body='I agree to take part in the study.', order=9, camera_only=False)
+    cq.save()
+    cq = CQ(body='Please note that you may only participate in this task and survey if you are 18 years of age or over. I certify that I am 18 years of age or over.', order=10, camera_only=False)
+    cq.save()
+    cq = CQ(body='I understand that the research will be written up and published as part of a student thesis, stored in the University’s online archive accessible on the internet, may be published online in journal articles and used in conference and other presentations and publications.', order=6, camera_only=False)
+    cq.save()
+    cq = CQ(body='I understand that some aspects of this study will require me to be watched via webcam, but that no recording will be made.', order=7, camera_only=True)
+    cq.save()
+
+**N.B.** The system is currently hard coded to have 10 consent questions, so a bit of work will be needed if you need to adjust the number of questions. The text in these questions must be changed to suit your needs.
+
 ## Experiment options
 
 Currently there are two ways to start the experiment:
