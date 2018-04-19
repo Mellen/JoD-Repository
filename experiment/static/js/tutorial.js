@@ -119,7 +119,7 @@
 	 instruction.className = 'well';
 	 instruction.style.position = 'absolute';
 	 instruction.style.width = '10%';
-	 var insText = document.createTextNode('In the last pairing, our dice roll was 2, which means that we will not have our income destroyed by chance (this only occurs when the dice roll 1 or 6). However our partner decided, as we did, to pay 10p to destroy 50p of our payment. Our current payout is 100p - 10p (our decision) - 50p (our partner\'s decision), which totals 40p. We cannot tell whether it was our partner or chance that caused the reduction as we never see the dice roll or our partner\'s decison.');
+	 var insText = document.createTextNode('Our partner decided, as we did, to pay 10p to destroy 50p of our payment. Our current payout is 100p - 10p (our decision) - 50p (our partner\'s decision), which totals 40p.');
 	 instruction.appendChild(insText);
 	 instruction.appendChild(document.createElement('br'));
 	 var nextLink = document.createElement('a');
@@ -213,7 +213,7 @@
 	 instruction.className = 'well';
 	 instruction.style.position = 'absolute';
 	 instruction.style.width = '10%';
-	 var insText = document.createTextNode('Our dice roll for the last round was 5, so we were not affected by a random reduction. Our partner rolled a 1 so their payout would be reduced by 50p, however they would not know if this was by chance or by our decision. Our payout for the last round was the full 100p as we didn\'t pay 10p to reduce our partner\'s payout and they didn\'t pay to reduce ours. That gives us a running total of 140p.');
+	 var insText = document.createTextNode('Our payout for the last round was the full 100p as we didn\'t pay 10p to reduce our partner\'s payout and they didn\'t pay to reduce ours. That gives us a running total of 140p.');
 	 instruction.appendChild(insText);
 	 instruction.appendChild(document.createElement('br'));
 	 var nextLink = document.createElement('a');
@@ -279,7 +279,7 @@
 	 instruction.className = 'well';
 	 instruction.style.position = 'absolute';
 	 instruction.style.width = '10%';
-	 var insText = document.createTextNode('Our dice roll for the last round was 5, so we were not affected by a random reduction. We paid 10p so our partner\'s  payout would be reduced by 50p, however they would not know if this was by chance or by our decision. Our partner decided not to pay 10p, which means our payout for the last round was 90p, with a running total of 230p.');
+	 var insText = document.createTextNode('We paid 10p so our partner\'s  payout would be reduced by 50p. Our partner decided not to pay 10p, which means our payout for the last round was 90p, with a running total of 230p.');
 	 instruction.appendChild(insText);
 	 instruction.appendChild(document.createElement('br'));
 	 var nextLink = document.createElement('a');
@@ -308,7 +308,7 @@
 	 instruction.className = 'well';
 	 instruction.style.position = 'absolute';
 	 instruction.style.width = '10%';
-	 var insText = document.createTextNode('In this final round of the tutorial we have chosen not to pay 10p, so our partner\'s income is not affected by us, although they can\'t know that.');
+	 var insText = document.createTextNode('In this final round of the tutorial we have chosen not to pay 10p, so our partner\'s income is not affected by us.');
 	 instruction.appendChild(insText);
 	 instruction.appendChild(document.createElement('br'));
 	 var nextLink = document.createElement('a');
@@ -345,7 +345,7 @@
 	 instruction.className = 'well';
 	 instruction.style.position = 'absolute';
 	 instruction.style.width = '10%';
-	 var insText = document.createTextNode('Our dice roll for the last round was 4, so we are not affected by random reduction. We did not pay 10p so our partner\'s  payout will not be reduced by us. Our partner decided to pay 10p, which means our payout for the last round was 50p, with a running total of 280p.');
+	 var insText = document.createTextNode('We did not pay 10p so our partner\'s payout will not be reduced by us. Our partner decided to pay 10p, which means our payout for the last round was 50p, with a running total of 280p.');
 	 instruction.appendChild(insText);
 	 instruction.appendChild(document.createElement('br'));
 	 var nextLink = document.createElement('a');
