@@ -83,7 +83,7 @@ class ResultsDownload(admin.ModelAdmin):
         query_set = SVOAnswer.objects.all().order_by('participant', 'question')
 
         for s in query_set:
-            writer.writerow([str(s.participant.id)[:7], s.you_receive, s.they_receive])
+            writer.writerow([str(s.participant.id), str(s.participant.id)[:7], s.you_receive, s.they_receive])
         
         f.seek(0)
         response = HttpResponse(f, content_type='text/csv')

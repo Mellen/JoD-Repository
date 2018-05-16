@@ -193,6 +193,8 @@ class SurveyReturn(TemplateView):
         context = super(SurveyReturn, self).get_context_data(**kwargs)
         context['PAURL'] = SiteSettings.objects.filter(key='PAURL').first().value;
         participant = ParticipantResult.objects.filter(pk=uuid.UUID(self.request.session['user'])).first()
+        participant.limesurveyid = self.request.GET['surveyid']
+        participant.save()
 
         context['date'] = datetime.now().strftime('%d %B %Y')
 
@@ -218,7 +220,7 @@ class SurveyReturn(TemplateView):
             
             for participant in should_be_paid:
                 payout = WorkItemResult.objects.filter(participant=participant, trial_number=max_partner).first().total_payoff_at_round_start
-                writer.writerow([participant.prolificacademicid, payout/10])
+                writer.writerow([participant.prolificacademicid, payout/10 - 4])
 
             bonus_email = SiteSettings.objects.filter(key='bonus_email').first().value
                 
